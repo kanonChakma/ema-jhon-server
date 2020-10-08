@@ -6,7 +6,7 @@ const app = express()
 const port = 5000;
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://emaJhonSimple:emaJhonSimple69@cluster0.ynfam.mongodb.net/allProduct?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ynfam.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -55,6 +55,6 @@ app.post('/addProduct',(req, res) => {
   })
 })
 app.get('/', (req, res) =>{
-  res.send('Hello World!')
+  res.send('Hello database are working ')
 })
 app.listen(process.env.PORT||port)
