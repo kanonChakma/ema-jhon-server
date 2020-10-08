@@ -47,7 +47,7 @@ client.connect(err => {
   })
 });
 
-app.post('/addProduct',(req, res) => {
+app.post('/addOrders',(req, res) => {
   const product=req.body
  orderCollection.insertOne(product)
  .then(result=>{
