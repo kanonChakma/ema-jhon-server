@@ -15,9 +15,7 @@ app.use(bodyParser.json())
 
 const client = new MongoClient(uri, { useNewUrlParser: true,useUnifiedTopology: true });
 client.connect(err => {
-  const collection = client.db("allProduct").collection("product");
-  const orderCollection = client.db("allProduct").collection("orders");
-   
+  const collection = client.db("allProduct").collection("product"); 
     app.post('/addProduct',(req, res) => {
       const product=req.body
      collection.insertOne(product)
@@ -46,10 +44,10 @@ client.connect(err => {
     })
   })
 });
-
+const orderCollection = client.db("allProduct").collection("orders");
 app.post('/addOrders',(req, res) => {
-  const product=req.body
- orderCollection.insertOne(product)
+  const product=req.body;
+  orderCollection.insertOne(product)
  .then(result=>{
     res.send(result.insertedCount>0)
   })
